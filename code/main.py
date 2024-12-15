@@ -10,8 +10,8 @@ def main():
         print("Usage: fr <path1> [path2 ... pathN]")
         sys.exit(1)
 
-    targets = sys.argv[1:]  # Get all paths passed as arguments
-    passes = 3  # Default number of overwrite passes
+    targets = sys.argv[1:]
+    passes = 5
 
     for target_path in targets:
         if not os.path.exists(target_path):
