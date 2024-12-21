@@ -20,8 +20,8 @@ A Python-based command-line utility for secure deletion of files and directories
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-repo/secure-delete.git
-   cd secure-delete
+   git clone https://github.com/Bolo101/fileRemove.git
+   cd fileRemove/code
    ```
 
 2. Ensure the script is executable:
