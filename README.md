@@ -87,4 +87,4 @@ project/
 
 ## License
 
-This project is licensed under the Creative Common 4 License - see the LICENSE file for details.
+This project is licensed under the Creative Commons 4 License - see the LICENSE file for details.
