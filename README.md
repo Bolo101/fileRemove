@@ -82,6 +82,7 @@ project/
     ├── secure_delete.py         # Logic for secure deletion of files and directories
     ├── file_operations.py       # Functions for file and directory operations
     ├── random_generator.py      # Secure random number generator implementation
+|   LICENSE
 ```
 
 
