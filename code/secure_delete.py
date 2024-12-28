@@ -1,7 +1,7 @@
 import os
 from random_generator import secure_random_bytes
 
-def secure_delete_file(file_path, passes=3):
+def secure_delete_file(file_path, passes=5):
     """
     Securely deletes a file by overwriting its content multiple times.
     """
@@ -25,7 +25,7 @@ def secure_delete_file(file_path, passes=3):
     except Exception as e:
         print(f"Error securely deleting file {file_path}: {e}")
 
-def secure_delete_directory(directory_path, passes=3):
+def secure_delete_directory(directory_path, passes=5):
     """
     Securely deletes all files and subdirectories within a directory.
     """
