@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import sys
 import os
 from secure_delete import secure_delete_file, secure_delete_directory

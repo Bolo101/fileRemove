@@ -1,4 +1,3 @@
-
 # Secure File Deletion Tool
 
 A Python-based command-line utility for secure deletion of files and directories. This tool ensures that deleted data cannot be recovered by overwriting it with multiple passes of random data followed by zero-padding.
@@ -84,7 +83,6 @@ project/
     ├── random_generator.py      # Secure random number generator implementation
 |   LICENSE
 ```
-
 
 ## License
 
