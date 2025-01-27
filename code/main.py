@@ -1,21 +1,21 @@
 #!/usr/bin/env python3
 
-import os
+from pathlib import Path
 from argparse import ArgumentParser
 from secure_delete import secure_delete_file, secure_delete_directory
 
-def main(passes, targets):
+def main(passes : int, targets : Path):
     """
     Main entry point for the secure delete tool.
     """
     for target_path in targets:
-        if not os.path.exists(target_path):
+        if not target_path.exists():
             print(f"Error: {target_path} does not exist.")
             continue
 
-        if os.path.isfile(target_path):
+        if target_path.is_file():
             secure_delete_file(target_path, passes)
-        elif os.path.isdir(target_path):
+        elif target_path.is_dir():
             secure_delete_directory(target_path, passes)
         else:
             print(f"Error: {target_path} is not a valid file or directory.")
