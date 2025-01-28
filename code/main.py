@@ -1,22 +1,22 @@
 #!/usr/bin/env python3
 
 from pathlib import Path
-from argparse import ArgumentParser
+from argparse import ArgumentParser,Namespace
 from secure_delete import secure_delete_file, secure_delete_directory
 
-def main(passes : int, targets : Path):
+def main(args: Namespace):
     """
     Main entry point for the secure delete tool.
     """
-    for target_path in targets:
+    for target_path in args.targets:
         if not target_path.exists():
             print(f"Error: {target_path} does not exist.")
             continue
 
         if target_path.is_file():
-            secure_delete_file(target_path, passes)
+            secure_delete_file(target_path, args.p)
         elif target_path.is_dir():
-            secure_delete_directory(target_path, passes)
+            secure_delete_directory(target_path, args.p)
         else:
             print(f"Error: {target_path} is not a valid file or directory.")
 
@@ -25,13 +25,14 @@ def main(passes : int, targets : Path):
 def _parse_args():
     parser = ArgumentParser(description="Secure file eraser to run in terminal. Delete both files and directories")
     parser.add_argument('-p',
-                        help="Number of passes to overwrite target data",
-                        type=int,
-                        default=7,
-                        required=False)
+        help="Number of passes to overwrite target data",
+        type=int,
+        default=7,
+        required=False)
     parser.add_argument('targets', 
-                        nargs='*',
-                        help="Files or directories to securely delete")
+        nargs='+',
+		type=Path,
+        help="Files or directories to securely delete")
     return parser.parse_args()
 
 if __name__ == "__main__":
@@ -42,4 +43,4 @@ if __name__ == "__main__":
         print("Usage: fr [-p PASSES] <file1> [file2 ...] [-p PASSES]")
         exit(1)
 
-    main(args.p, args.targets)
+    main(args)
