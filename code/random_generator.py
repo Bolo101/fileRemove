@@ -1,10 +1,15 @@
 import os
-import hashlib
+import logging
 
 def secure_random_bytes(size):
     """
-    Generates secure random bytes using /dev/urandom and additional hashing.
+    Generates secure random bytes using os.urandom().
     """
-    random_data = os.urandom(size)
-    hashed_data = hashlib.sha256(random_data).digest()
-    return hashed_data[:size]
+    try:
+        return os.urandom(size)
+    except MemoryError:
+        logging.error("Memory error occurred while generating secure random bytes.")
+        return b''  # Return empty bytes on failure
+    except OSError as err:
+        logging.error(f"OS error while generating random bytes: {err}")
+        return b''
